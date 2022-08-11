@@ -1,16 +1,19 @@
-#from multiprocessing.sharedctypes import Value
-from distutils.log import error
-from unicodedata import category
 import requests
 import time
 import os
 
+
+
+print("starting...")
 Credits = ('''
 ############ Credits ############
 #           Nosson-p            #
 #################################
 ''')
-print("starting...")
+
+
+
+
 # getting categorys from api
 while True:
     try:
@@ -22,15 +25,20 @@ while True:
             break
         else:
             os.system("cls")
-            print("something went wrong how about we try that again.")
+            print("hmmm looks like that is not a catogory lets try again.")
             time.sleep(3)
             continue
     except requests.exceptions.RequestException:
-        print("something went wrong how about we try that again.")
         os.system("cls")
+        print("oops somthing went wrong try again later.")
+        time.sleep(3)
+        exit()
         continue
 
 os.system("cls")
+
+
+
 while True:
     try:
         # getting joke with selected category piing into json and filtering "value" and replaceing any "Chuck Norris" with "Nosson"
@@ -39,5 +47,7 @@ while True:
         print(joke_from_api)
     except requests.exceptions.RequestException:
         os.system("cls")
-        print("something went wrong how about we try that again.")
+        print("oops somthing went wrong try again later.")
+        time.sleep(3)
+        exit()
         continue
